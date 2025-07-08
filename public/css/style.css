@@ -2692,6 +2692,8 @@ form textarea {
 
 .footer .block.about img {
     margin-bottom: 25px;
+    width: 200px; /* Sesuaikan ukurannya */
+    height: auto; /* Supaya tidak distorsi */
 }
 
 .footer .block.about p {

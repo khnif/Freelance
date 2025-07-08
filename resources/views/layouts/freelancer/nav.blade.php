@@ -50,7 +50,7 @@
                                 <a class="nav-link" href="{{ route('about') }}">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+                                <a class="nav-link" href=" ">Contact Us</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto mt-10">

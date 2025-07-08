@@ -26,7 +26,8 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-10">
                                                 <input type="text" class="form-control my-2 my-lg-1" id="inputtext4"
-                                                    placeholder="What are you looking for" name="data" autocomplete="off">
+                                                    placeholder="What are you looking for" name="data"
+                                                    autocomplete="off">
                                             </div>
                                             <div class="form-group col-md-2 align-self-center">
                                                 <button type="submit" class="btn btn-primary">Search Now</button>
@@ -45,13 +46,13 @@
     </section>
 
     <!--===================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            =            Client Slider            =
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ====================================-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        =            Client Slider            =
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ====================================-->
 
 
     <!--===========================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            =            Popular deals section            =
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ============================================-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        =            Popular deals section            =
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ============================================-->
 
     <section class="popular-deals section bg-gray">
         <div class="container">
@@ -59,7 +60,7 @@
                 <div class="col-md-12">
                     <div class="section-title">
                         <h2>Featured Gigs</h2>
-                        <p>Browse through best of the best gigs available in OPPORTUNIT<span style="color: blue">Y</span>
+                        <p>Browse through best of the best gigs available in SKILL<span style="color: blue">MART</span>
                         </p>
                     </div>
                 </div>
@@ -82,13 +83,11 @@
 
                                                     @foreach ($gig->thumbnail as $thumbnail)
                                                         @if ($loop->first)
-                                                            <img class="card-img-top img-fluid"
-                                                                src="{{ $thumbnail->url }}"
+                                                            <img class="card-img-top img-fluid" src="{{ $thumbnail->url }}"
                                                                 alt="images/products/products-1.jpg"
                                                                 style="height: 250px; width:fit-content"
                                                                 alt="Card image cap">
                                                         @endif
-
                                                     @endforeach
                                                 </a>
                                             </div>
@@ -116,7 +115,6 @@
                                                                 @elseif ($loop->last)
                                                                     - ${{ $option->price }}
                                                                 @endif
-
                                                             @endforeach
                                                         </h2>
                                                     </ul>
@@ -138,8 +136,8 @@
 
 
     <!--==========================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            =            All Category Section            =
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ===========================================-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        =            All Category Section            =
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ===========================================-->
 
     <section class=" section">
         <!-- Container Start -->
@@ -149,7 +147,7 @@
                     <!-- Section title -->
                     <div class="section-title">
                         <h2>All Categories</h2>
-                        <p>Browse through all the categories available in OPPORTUNIT<span style="color: blue">Y</span></p>
+                        <p>Browse through all the categories available in SKILL<span style="color: blue">MART</span></p>
                     </div>
                     <div class="row">
                         @foreach ($category as $category)
@@ -168,14 +166,15 @@
                                                 <li>
                                                     <button type="submit" name="your_name" value="your_value"
                                                         class="btn-link">
-                                                        {{ $sub->name }} <span>{{ $sub->count() }}</span>
+                                                        {{ $sub->name }} <span>{{ $sub->gigs->count() }}</span>
                                                     </button>
                                                 </li>
                                             </form>
                                         @endforeach
                                     </ul>
                                 </div>
-                            </div> <!-- /Category List -->
+                            </div>
+                            <!-- /Category List -->
                         @endforeach
                     </div>
                 </div>
@@ -201,6 +200,5 @@
             flex-direction: row;
             justify-content: space-between;
         }
-
     </style>
 @endsection

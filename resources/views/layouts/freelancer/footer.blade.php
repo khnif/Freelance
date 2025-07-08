@@ -8,7 +8,7 @@
                     <!-- footer logo -->
                     <img src="{{ url('images/logo-footer.png') }}" alt="">
                     <!-- description -->
-                    <p class="alt-color">Opportunity ® is a registered Trademark of Opportunity Technology Pty
+                    <p class="alt-color">SkillMart ® is a registered Trademark of SkillMart Technology Pty
                         Limited
                     </p>
                     <p>
@@ -16,7 +16,7 @@
                         <script>
                             var CurrentYear = new Date().getFullYear()
                             document.write(CurrentYear)
-                        </script> Opportunity Technology Pvt Limited</p>
+                        </script> SkillMart Technology Pvt Limited</p>
                 </div>
             </div>
             <!-- Link list -->
@@ -24,8 +24,8 @@
                 <div class="block">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('about') }}">About Us</a></li>
+                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
                         <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
                             document.write(CurrentYear)
                         </script>.
                         All Rights Reserved </span><a class="text-primary"
-                        href="{{ route('gig.list') }}">Opportunity</a>
+                        href="{{ route('gig.list') }}">SkillMart</a>
                     </p>
                 </div>
             </div>
@@ -78,6 +78,7 @@
         </div>
     </div>
     <!-- Container End -->
+    
     <!-- To Top -->
     <div class="top-to">
         <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>

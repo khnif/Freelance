@@ -47,7 +47,6 @@
         .select2-selection__arrow {
             height: 44px !important;
         }
-
     </style>
 </head>
 
@@ -85,7 +84,7 @@
 
     <script>
         tinymce.init({
-            selector: 'textarea#text-editor',
+            selector: 'textarea #text-editor',
             height: 500,
             menubar: false,
             plugins: [
@@ -246,6 +245,7 @@
         }
         // DropzoneJS Demo Code End
     </script>
+
 </body>
 
 </html>
