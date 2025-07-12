@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-img">
-                        <img src="https://i.ibb.co/vJvQ8v6/New-Project.png" class="img-fluid w-100 rounded" alt="">
+                        <img src="{{ url('images/logo.png') }}" class="img-fluid w-100 rounded" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 pt-5 pt-lg-0">
@@ -72,7 +72,7 @@
                         <div class="card-body bg-gray text-center">
                             <h5 class="card-title">
                                 <a href="https://github.com/shishirregmi">
-                                    Shishir Regmi
+                                    Ahmad Bagus Setiawan
                                 </a>
                             </h5>
                             <p class="card-text">CSIT</p>
@@ -88,7 +88,7 @@
                         <div class="card-body bg-gray text-center">
                             <h5 class="card-title">
                                 <a href="https://github.com/BroshaN10">
-                                    Roshan Basnet
+                                    Alvin Purnamasari
                                 </a>
                             </h5>
                             <p class="card-text">CSIT</p>
@@ -103,12 +103,12 @@
                             class="img-fluid w-100" alt="Card image cap">
                         <div class="card-body bg-gray text-center">
                             <h5 class="card-title">
-                                <a href="https://github.com/anupam-gautam">
-                                    Anupam Gautam
+                                <a href="https://github.com/khnif">
+                                    Hanif Arbiyanto
                                 </a>
                             </h5>
-                            <p class="card-text">CSIT</p>
-                            <p class="card-text">NCCS College</p>
+                            <p class="card-text">UI/UX</p>
+                            <p class="card-text">Backend Developer</p>
                         </div>
                     </div>
                 </div>

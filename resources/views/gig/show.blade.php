@@ -12,6 +12,25 @@
                 <div class="col-md-8">
                     <div class="product-details">
                         <h1 class="product-title">{{ $gig->title }}</h1>
+                        @auth
+                            @if (Auth::user()->id === $gig->freelancer->user->id || Auth::user()->is_admin)
+                                <div class="mb-3">
+                                    <a href="{{ route('gig.edit', $gig->id) }}" class="btn btn-sm btn-info mr-2">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+
+                                    <form action="{{ route('gig.delete', $gig->id) }}" method="POST" class="d-inline"
+                                        onsubmit="return confirm('Are you sure you want to delete this gig?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
+
                         <div class="product-meta">
                             <ul class="list-inline">
                                 <li class="list-inline-item"><i class="fa fa-user-o"></i> By <a
@@ -58,15 +77,15 @@
                                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
                                         role="tab" aria-controls="pills-home" aria-selected="true">Product Details</a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
-                                        href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                        aria-selected="false">Purchase</a>
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                        role="tab" aria-controls="pills-profile" aria-selected="false">Purchase</a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
-                                        href="#pills-contact" role="tab" aria-controls="pills-contact"
-                                        aria-selected="false">Reviews</a>
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
+                                        role="tab" aria-controls="pills-contact" aria-selected="false">Reviews</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
@@ -96,7 +115,6 @@
 
                                                     @if (Auth::user())
                                                         @if (Auth::user()->id != $option->gig->freelancer_id)
-
                                                             @foreach ($option->order as $order)
                                                                 @if ($order->user_id === Auth::user()->id && $order->status != 'Cancelled' && $order->status != 'Completed')
                                                                     @php
@@ -161,18 +179,14 @@
                                                             <strong>{{ Auth::user()->name }}</strong>
                                                         </div>
                                                         <div class="col-12">
-                                                            <textarea name="text" id="review" rows="10"
-                                                                class="form-control" placeholder="Message"></textarea>
+                                                            <textarea name="text" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
                                                         </div>
                                                         <div class="col-12">
                                                             <button type="submit" class="btn btn-main">Submit</button>
                                                         </div>
                                                     </form>
                                                 </div>
-
-
                                             @else
-
                                                 <p><a href="">Login To Comment</a></p>
                                             @endif
                                         </div>
@@ -188,6 +202,7 @@
                         <div class="widget price text-center">
                             <h4>Seller</h4>
                         </div>
+
                         <!-- User Profile widget -->
                         <div class="widget user text-center">
                             <img class="rounded-circle img-fluid mb-5 px-5"

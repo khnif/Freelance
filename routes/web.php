@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/checkout/', [CheckoutCon
 // });
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
-Route::post('/send/mail',[ContactController::class, 'sendEmail'])->name('contact.send');
+Route::post('/send/mail', [ContactController::class, 'sendEmail'])->name('contact.send');
 
 Route::get('/terms', function () {
     return view('termspolicies');
@@ -73,7 +73,7 @@ Route::post('/searchresult/category', [GigController::class, 'categorySearch'])-
 Route::get('/search/category', [GigController::class, 'categorySearch'])->name('category.search');
 Route::middleware(['auth:sanctum', 'verified'])->get('/gig/edit/{id}', [GigController::class, 'edit'])->name('gig.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/gig/update/{id}', [GigController::class, 'update'])->name('gig.update');
-Route::middleware(['auth:sanctum', 'verified'])->get('/gig/delete/{id}', [GigController::class, 'destroy'])->name('gig.delete');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/gig/delete/{id}', [GigController::class, 'destroy'])->name('gig.delete');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/order/list', [OrderController::class, 'index'])->name('order.list');
 Route::middleware(['auth:sanctum', 'verified'])->get('/order/create/{id}', [OrderController::class, 'create'])->name('order.create');
@@ -89,9 +89,14 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/option/create/{id}', [OptionController::class, 'create'])->name('option.create');
 Route::middleware(['auth:sanctum', 'verified'])->post('/option/store', [OptionController::class, 'store'])->name('option.store');
+Route::middleware(['auth:sanctum', 'verified'])->get('/option/edit/{id}', [OptionController::class, 'edit'])->name('option.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/option/update/{id}', [OptionController::class, 'update'])->name('option.update');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/thumbnail/create/{id}', [ThumbnailController::class, 'create'])->name('thumbnail.create');
 Route::middleware(['auth:sanctum', 'verified'])->post('/thumbnail/store', [ThumbnailController::class, 'store'])->name('thumbnail.store');
+Route::middleware(['auth:sanctum', 'verified'])->get('/thumbnail/edit/{id}', [ThumbnailController::class, 'edit'])->name('thumbnail.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/thumbnail/update/{id}', [ThumbnailController::class, 'update'])->name('thumbnail.update');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/thumbnail/delete/{id}', [ThumbnailController::class, 'destroy'])->name('thumbnail.delete');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/skill/create/{id}', [SkillController::class, 'create'])->name('skill.create');
 Route::middleware(['auth:sanctum', 'verified'])->post('/skill/store', [SkillController::class, 'store'])->name('skill.store');
@@ -106,9 +111,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/employment/create/{id}', 
 Route::middleware(['auth:sanctum', 'verified'])->post('/employment/store', [EmploymentController::class, 'store'])->name('employment.store');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
-    
-    Route::middleware(['auth:sanctum', 'verified'])->get('/admin', [CategoryController::class, 'index'])->name('dashboard');
-    Route::middleware(['auth:sanctum', 'verified'])->post('/category/store', [CategoryController::class, 'store'])->name('category.store');
-    Route::middleware(['auth:sanctum', 'verified'])->post('/sub_category/store', [SubCategoryController::class, 'store'])->name('sub_category.store');
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin', [CategoryController::class, 'index'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::middleware(['auth:sanctum', 'verified'])->post('/sub_category/store', [SubCategoryController::class, 'store'])->name('sub_category.store');
+Route::middleware(['auth:sanctum', 'verified'])->put('/sub_category/update/{id}', [SubCategoryController::class, 'update'])->name('sub_category.update');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/sub_category/delete/{id}', [SubCategoryController::class, 'destroy'])->name('sub_category.destroy');

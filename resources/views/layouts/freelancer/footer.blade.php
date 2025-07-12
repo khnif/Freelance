@@ -16,7 +16,8 @@
                         <script>
                             var CurrentYear = new Date().getFullYear()
                             document.write(CurrentYear)
-                        </script> SkillMart Technology Pvt Limited</p>
+                        </script> SkillMart Technology Pvt Limited
+                    </p>
                 </div>
             </div>
             <!-- Link list -->
@@ -60,25 +61,24 @@
                             var CurrentYear = new Date().getFullYear()
                             document.write(CurrentYear)
                         </script>.
-                        All Rights Reserved </span><a class="text-primary"
-                        href="{{ route('gig.list') }}">SkillMart</a>
+                        All Rights Reserved
+                    </span><a class="text-primary" href="{{ route('gig.list') }}">SkillMart</a>
                     </p>
                 </div>
             </div>
             <div class="col-sm-6 col-12">
                 <!-- Social Icons -->
                 <ul class="social-media-icons text-right">
-                    <li><a class="fa fa-facebook" href="#" target="_blank"></a></li>
-                    <li><a class="fa fa-twitter" href="#" target="_blank"></a></li>
-                    <li><a class="fa fa-github" href="#" target="_blank"></a>
-                    </li>
+                    <li><a class="fa fa-facebook" href="#"></a></li>
+                    <li><a class="fa fa-twitter" href="#"></a></li>
+                    <li><a class="fa fa-github" href="#"></a></li>
                     <li><a class="fa fa-instagram" href="#"></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- Container End -->
-    
+
     <!-- To Top -->
     <div class="top-to">
         <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>

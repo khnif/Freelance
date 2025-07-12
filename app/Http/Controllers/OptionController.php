@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Option;
 use App\Models\Gig;
-
-
+use App\Models\Option;
+use App\Models\Thumbnail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OptionController extends Controller
 {
@@ -57,7 +57,7 @@ class OptionController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,7 +66,8 @@ class OptionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gig = Gig::with('option')->findOrFail($id);
+        return view('option.edit', compact('gig'));
     }
 
     /**
@@ -78,7 +79,15 @@ class OptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        foreach ($request->option_ids as $index => $optionId) {
+            $option = Option::findOrFail($optionId);
+            $option->name = $request->names[$index];
+            $option->description = $request->descriptions[$index];
+            $option->price = $request->prices[$index];
+            $option->deadline = $request->deadlines[$index];
+            $option->save();
+        }
+        return redirect()->route('thumbnail.edit', $id)->with('success', 'Options updated successfully.');
     }
 
     /**

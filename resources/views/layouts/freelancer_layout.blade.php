@@ -11,22 +11,28 @@
 
     <!-- FAVICON -->
     {{-- <link href="img/favicon.png" rel="shortcut icon"> --}}
+
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <link href="{{ url('plugins/summernote/summernote.css') }}" rel="stylesheet" />
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url('plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('plugins/bootstrap/css/bootstrap-slider.css') }}">
+
     <!-- Font Awesome -->
     <link href="{{ url('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
     <!-- Owl Carousel -->
     <link href="{{ url('plugins/slick-carousel/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ url('plugins/slick-carousel/slick/slick-theme.css') }}" rel="stylesheet">
+
     <!-- Fancy Box -->
     <link href="{{ url('plugins/fancybox/jquery.fancybox.pack.css') }}" rel="stylesheet">
     <link href="{{ url('plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+        
     <!-- CUSTOM CSS -->
     <link href="{{ url('css/style.css') }}" rel="stylesheet">
 
@@ -52,6 +58,7 @@
 
 <body class="body-wrapper">
     @include('layouts.freelancer.nav')
+
     @yield('content')
 
     @include('layouts.freelancer.footer')

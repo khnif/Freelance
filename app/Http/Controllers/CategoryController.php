@@ -17,12 +17,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        $category2 = Category::all();
-        $sub_category = SubCategory::all();
-        if(Auth::user()->email == 'admin@email.com'){
-            return view('dashboard', compact('category','category2','sub_category'));
-        }else{            
+        $categories = Category::all(); // ganti dari $category dan $category2
+        $sub_categories = SubCategory::all();
+
+        if (Auth::user()->email == 'admin@email.com') {
+            return view('dashboard', compact('categories', 'sub_categories'));
+        } else {
             return redirect()->route('gig.list');
         }
     }
@@ -32,10 +32,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.

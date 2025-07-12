@@ -74,7 +74,17 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $sub_category = SubCategory::findOrFail($id);
+        $sub_category->name = $request->name;
+        $sub_category->category_id = $request->category_id;
+        $sub_category->save();
+
+        return redirect()->route('dashboard')->with('success', 'Subcategory updated successfully!');
     }
 
     /**
@@ -85,6 +95,9 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sub_category = SubCategory::findOrFail($id);
+        $sub_category->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Subcategory deleted successfully!');
     }
 }

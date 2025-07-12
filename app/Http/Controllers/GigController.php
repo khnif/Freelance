@@ -94,8 +94,18 @@ class GigController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gig = Gig::findOrFail($id);
+        $category = Category::all();
+        $sub_category = SubCategory::all();
+
+        // Pastikan hanya owner atau admin yang bisa edit
+        if (auth()->user()->id !== $gig->freelancer->user->id && !auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        return view('gig.edit', compact('gig', 'category', 'sub_category'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -106,8 +116,28 @@ class GigController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required',
+            'sub_category_id' => 'required',
+        ]);
+
+        $gig = Gig::findOrFail($id);
+
+        if (auth()->user()->id !== $gig->freelancer->user->id && !auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $gig->title = $request->title;
+        $gig->description = $request->description;
+        $gig->category_id = $request->category_id;
+        $gig->sub_category_id = $request->sub_category_id;
+        $gig->save();
+
+        return redirect()->route('gig.show', $gig->id)->with('success', 'Gig updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -117,6 +147,14 @@ class GigController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gig = Gig::findOrFail($id);
+
+        $gig->thumbnail()->delete();
+        $gig->option()->delete();
+        $gig->comment()->delete();
+
+        $gig->delete();
+
+        return redirect()->route('gig.list')->with('success', 'Gig deleted successfully.');
     }
 }

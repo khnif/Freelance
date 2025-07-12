@@ -3,7 +3,6 @@
 @section('title', 'Create')
 
 @section('content')
-
     <section class=" bg-gray py-5">
         <div class="container">
             <div class="flex-random">

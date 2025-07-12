@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Thumbnail;
 use App\Models\Gig;
-
+use App\Models\Option;
+use App\Models\Thumbnail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class ThumbnailController extends Controller
@@ -27,8 +28,7 @@ class ThumbnailController extends Controller
     public function create($id)
     {
         $gig = Gig::find($id);
-        return view('thumbnail.create',compact('gig'));
-
+        return view('thumbnail.create', compact('gig'));
     }
 
     /**
@@ -42,16 +42,16 @@ class ThumbnailController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
-    
-        $imageName = time().'.'.$request->image->extension();  
-     
+
+        $imageName = time() . '.' . $request->image->extension();
+
         $request->image->move(public_path('images/uploads'), $imageName);
-         
+
         $thumbnail = new Thumbnail();
-        $thumbnail->url = '/images/uploads/'.$imageName;
+        $thumbnail->url = '/images/uploads/' . $imageName;
         $thumbnail->gig_id = $request->gig_id;
         $thumbnail->save();
-        return redirect()->route('thumbnail.create',['id'=>$request->gig_id]);
+        return redirect()->route('thumbnail.create', ['id' => $request->gig_id]);
     }
 
     /**
@@ -73,7 +73,8 @@ class ThumbnailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gig = Gig::with('thumbnail')->findOrFail($id);
+        return view('thumbnail.edit', compact('gig'));
     }
 
     /**
@@ -85,7 +86,16 @@ class ThumbnailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->hasFile('thumbnail')) {
+            foreach ($request->file('thumbnail') as $image) {
+                $path = $image->store('thumbnails', 'public');
+                Thumbnail::create([
+                    'gig_id' => $id,
+                    'url' => '/storage/' . $path,
+                ]);
+            }
+        }
+        return redirect()->route('gig.show', $id)->with('success', 'Thumbnails updated successfully.');
     }
 
     /**
@@ -96,6 +106,14 @@ class ThumbnailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $thumbnail = Thumbnail::findOrFail($id);
+
+        // Optional: Hapus file fisik dari storage jika disimpan secara lokal
+        $relativePath = str_replace('/storage/', '', $thumbnail->url);
+        Storage::disk('public')->delete($relativePath);
+
+        $thumbnail->delete();
+
+        return back()->with('success', 'Thumbnail deleted successfully.');
     }
 }
